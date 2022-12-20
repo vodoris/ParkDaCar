@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vin: MyString
+  year: MyString
+  model: MyString
+  make: MyString
+  trim: MyString
+  owner: MyString
+  owner_address: MyString
+  owner_phone: MyString
+  check_in: MyString
+  check_in_attendant: MyString
+  check_out: MyString
+  check_out_attendant: MyString
+  facility: MyString
+  facility_address: MyString
+  facility_parking_spot: 1
+
+two:
+  vin: MyString
+  year: MyString
+  model: MyString
+  make: MyString
+  trim: MyString
+  owner: MyString
+  owner_address: MyString
+  owner_phone: MyString
+  check_in: MyString
+  check_in_attendant: MyString
+  check_out: MyString
+  check_out_attendant: MyString
+  facility: MyString
+  facility_address: MyString
+  facility_parking_spot: 1
