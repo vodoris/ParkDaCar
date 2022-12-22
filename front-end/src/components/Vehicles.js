@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Vehicles = ({ vehicles }) => {
   return (
     <div>
-      <div className="flex justify-between items-center mb-5">
-        <h1 className="text-5xl font-bold">Vehicles List</h1>
+      <h1 className="text-5xl font-bold mb-5">Vehicles List</h1>
+      <div className="flex justify-end my-5">
         <Link to={`/vehicles/add`}>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary text-right">
             <PlusIcon className="w-5 h-5" /> Add Vehicle
           </button>
         </Link>

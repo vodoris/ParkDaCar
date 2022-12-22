@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.4"
 # for whitelisting front-end react app
 gem 'rack-cors'
 
+# for hooking up third party api calls
+gem 'httparty'
+
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 

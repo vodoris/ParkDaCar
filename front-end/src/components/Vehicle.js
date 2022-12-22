@@ -26,93 +26,129 @@ const Vehicle = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-5">
-        <h1 className="text-3xl font-bold">{`${vehicle.year} ${vehicle.make} ${vehicle.model}`}</h1>
-
-        <button
-          className="btn btn-warning gap-2"
-          onClick={() => destroyVehicleData()}
-        >
-          <ClockIcon className="w-5 h-5" /> Check Out
-        </button>
+      <div className="flex justify-end my-5">
+        <Link to={`/`}>
+          <button className="btn btn-primary gap-2">
+            <ArrowLeftIcon className="w-5 h-5" /> Return to Vehicles List
+          </button>
+        </Link>
       </div>
       <div className="divider"></div>
-      <div class="card bg-success text-success-content">
-        <div class="card-body">
-          <div className="flex justify-between">
-            <span>Status:</span>
-            <span>{vehicle.check_out === "" ? "In" : "Out"}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Checked In:</span>
-            <span>{vehicle.check_in}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Attendant:</span>
-            <span>{vehicle.check_in_attendant}</span>
-          </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
-        <div class="card bg-primary text-primary-content">
-          <div class="card-body">
-            <h2 class="card-title">Vehicle</h2>
-            <div className="flex justify-between">
-              <span>VIN:</span>
-              <span>{vehicle.vin}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Year:</span>
-              <span>{vehicle.year}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Make:</span>
-              <span>{vehicle.make}</span>
-            </div>
+      <h1 className="text-3xl font-bold">{`${vehicle.year} ${vehicle.make} ${vehicle.model}`}</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+        <div>
+          <h2 className="text-xl font-bold mb-2">Vehicle</h2>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <tbody>
+                <tr>
+                  <th>VIN</th>
+                  <td>{vehicle.vin}</td>
+                </tr>
+                <tr>
+                  <th>Year</th>
+                  <td>{vehicle.year}</td>
+                </tr>
+                <tr>
+                  <th>Make</th>
+                  <td>{vehicle.make}</td>
+                </tr>
+                <tr>
+                  <th>Model</th>
+                  <td>{vehicle.model}</td>
+                </tr>
+                <tr>
+                  <th>Trim</th>
+                  <td>{vehicle.trim}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="card bg-secondary text-secondary-content">
-          <div class="card-body">
-            <h2 class="card-title">Owner</h2>
-            <div className="flex justify-between">
-              <span>Name:</span>
-              <span>{vehicle.owner}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Address:</span>
-              <span>{vehicle.owner_address}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Phone Number:</span>
-              <span>{vehicle.owner_phone}</span>
-            </div>
+        <div>
+          <h2 className="text-xl font-bold mb-2">Owner</h2>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td>{vehicle.owner}</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>{vehicle.owner_address}</td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
+                  <td>{vehicle.owner_phone}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="card bg-info text-info-content">
-          <div class="card-body">
-            <h2 class="card-title">Facility</h2>
-            <div className="flex justify-between">
-              <span>Name:</span>
-              <span>{vehicle.facility}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Address:</span>
-              <span>{vehicle.facility_address}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Parking Spot:</span>
-              <span>{vehicle.facility_parking_spot}</span>
-            </div>
+        <div>
+          <h2 className="text-xl font-bold mb-2">Facility</h2>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td>{vehicle.facility}</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>{vehicle.facility_address}</td>
+                </tr>
+                <tr>
+                  <th>Parking Spot</th>
+                  <td>{vehicle.facility_parking_spot}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
 
-      <Link to={`/`}>
-        <button className="btn btn-primary btn-link gap-2">
-          <ArrowLeftIcon className="w-5 h-5" /> Return to Vehicles List
-        </button>
-      </Link>
-      {JSON.stringify(vehicle)}
+        <div className="card card-compact bg-success text-success-content shadow-xl h-auto">
+          <div className="card-body">
+            <div className="flex justify-between">
+              <h2 className="card-title">Status:</h2>
+              <h2 className="card-title">
+                {vehicle.check_out === "" ? "In" : "Out"}
+              </h2>
+            </div>
+            <div className="divider m-0"></div>
+            <div className="flex justify-between">
+              <span>Checked In Time:</span>
+              <span>{vehicle.check_in}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Check In Attendant:</span>
+              <span>{vehicle.check_in_attendant}</span>
+            </div>
+            {vehicle.check_out && (
+              <>
+                <div className="flex justify-between">
+                  <span>Check Out Time:</span>
+                  <span>{vehicle.check_out}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Check Out Attendant:</span>
+                  <span>{vehicle.check_out_attendant}</span>
+                </div>
+              </>
+            )}
+            <div className="divider m-0"></div>
+            <div className="card-actions justify-end">
+              <button
+                className="btn btn-warning gap-2"
+                onClick={() => destroyVehicleData()}
+              >
+                <ClockIcon className="w-5 h-5" /> Check Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
